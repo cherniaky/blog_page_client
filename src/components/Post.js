@@ -3,14 +3,26 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Post = ({ id, title, text, date, author, comments }) => {
     const [dateFormat, setDate] = useState(new Date(date));
-
+    function getPrettyDate(d) {
+        return (
+            d.getDate() +
+            "." +
+            (d.getMonth() + 1) +
+            "." +
+            d.getFullYear() +
+            " " +
+            d.getHours() +
+            ":" +
+            d.getMinutes()
+        );
+    }
     return (
         <div className="card">
             <div className="card-title">{title} </div>
             <div className="card-text">{text.slice(0, 25)}... </div>
 
             <div className="card-date">
-                <i> {dateFormat.toLocaleDateString()}</i>{" "}
+                <i> {getPrettyDate(dateFormat)}</i>{" "}
             </div>
             <div className="card-bottom">
                 <Link to={`/${id}`}>
@@ -22,7 +34,7 @@ const Post = ({ id, title, text, date, author, comments }) => {
                     }`}
                 >
                     <svg
-                        class="MuiSvgIcon-root"
+                        className="MuiSvgIcon-root"
                         focusable="false"
                         viewBox="0 0 24 24"
                         aria-hidden="true"

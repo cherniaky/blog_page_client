@@ -2,7 +2,10 @@
     font-family: sans-serif;
     box-sizing: border-box;
 }
-
+.App{
+    display: flex;
+    flex-direction: column;
+}
 /* ::-webkit-scrollbar {
     width: 18px;
    
@@ -21,7 +24,7 @@
     background-clip: content-box;
 } */
 .App {
-    height: 100%;
+    min-height: 100vh;
     text-align: center;
 }
 ul {
@@ -33,7 +36,7 @@ ul {
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: calc(100vh - 80px);
+    /* height: calc(100vh - 80px); */
     background-image: linear-gradient(132.6deg, #3780ce 23.3%, #25d8d3 84.7%);
     background-size: cover;
     background-position: 50%;
@@ -68,6 +71,7 @@ footer{
     min-height: 100px;
     font-size: 16px;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
     padding: 20px;

@@ -8,10 +8,15 @@ export default class BlogService {
     static getPost(postid) {
         return $api.get(`posts/${postid}`);
     }
-    
+
     static getPostComments(postid) {
         return $api.get(`posts/${postid}/comments`);
     }
 
-   
+    static postComment(postid, user, text) {
+        return $api.post(`posts/${postid}/comments`, {
+            user,
+            text,
+        });
+    }
 }

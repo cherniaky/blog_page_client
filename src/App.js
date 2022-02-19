@@ -7,6 +7,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Oval } from "react-loader-spinner";
 import { Posts } from "./pages/Posts";
 import BlogService from "./Services/BlogService";
+import { Post } from "./pages/Post";
 
 function App() {
     const [loading, setLoading] = useState(false);
@@ -20,6 +21,20 @@ function App() {
         setLoading(false);
     }, []);
 
+    function getPrettyDate(d) {
+        return (
+            d.getDate() +
+            "-" +
+            (d.getMonth() + 1) +
+            "-" +
+            d.getFullYear() +
+            " " +
+            d.getHours() +
+            ":" +
+            d.getMinutes()
+        );
+    }
+    
     if (loading) {
         return (
             <div className="App loading-container">
@@ -39,18 +54,17 @@ function App() {
                         path="/"
                         element={<Posts posts={posts} />}
                     ></Route>
-                    {/* <Route
+                    <Route
                         exact
-                        path="/posts/:postid"
+                        path="/:postid"
                         element={<Post posts={posts} setPosts={setPosts} />}
-                    ></Route> */}
+                    ></Route>
                 </Routes>
             </div>
             <footer>
-                <div class="footer-container">
-                    <div class="footer-img-container">
-                       
-                        <div class="footer-icon">
+                <div className="footer-container">
+                    <div className="footer-img-container">
+                        <div className="footer-icon">
                             <a
                                 href="https://github.com/CherniakYura/blog_page_client"
                                 target="_blank"
@@ -58,7 +72,7 @@ function App() {
                                 title="GitHub Repo"
                             >
                                 <svg
-                                    class="MuiSvgIcon-root"
+                                    className="MuiSvgIcon-root"
                                     focusable="false"
                                     viewBox="0 0 24 24"
                                     aria-hidden="true"
@@ -70,7 +84,7 @@ function App() {
                             </a>
                         </div>
                     </div>
-                    <span class="project-desc">
+                    <span className="project-desc">
                         Built with React, NodeJs, Express, and Mongo Db, this
                         blog was made for The Odin Project's NodeJs curriculum
                         by <strong>cher_niak</strong>. Find me on{" "}
